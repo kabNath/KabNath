@@ -33,8 +33,12 @@ Deep RL for 5G NR link adaptation. Self-contained PPO in PyTorch, OLLA industry 
 
 **Result:** PPO learns competitive policy from scratch with ~3 min CPU training, fair head-to-head vs OLLA · 15/15 unit tests passing
 
+#### 🔐 [federated-csi-feedback](https://github.com/kabNath/federated-csi-feedback)
+Federated learning for CSI feedback compression. CsiNet autoencoder + FedAvg under non-IID channel statistics, aligned with 3GPP Release 18 AI-RAN study item.
+
+**Result:** FedAvg matches centralised performance (~−2 dB NMSE) and beats local-only by ~2 dB · 16/16 unit tests passing
+
 #### 🚧 In active development
-- `federated-csi-feedback` — CSI compression with FedAvg under non-IID channel statistics (3GPP Rel-18/19 AI-RAN)
 - `ris-beamforming-optimizer` — RIS phase optimization, manifold + deep learning algorithms
 - `oran-resource-allocation-xapp` — O-RAN xApp-style resource scheduling with DRL
 
