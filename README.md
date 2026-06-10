@@ -57,13 +57,7 @@ Federated learning for CSI feedback compression. CsiNet autoencoder + FedAvg und
 
 ---
 
-### 🎯 Currently open to
 
-- **Research internships** in AI/ML for wireless at NVIDIA, MediaTek, Qualcomm, Foxconn — summer / full-year
-- **R&D collaborations** on AI-native PHY, federated learning for RAN, multi-agent DRL for networks
-- **Quantitative engineering roles** — building a production algorithmic trading system on QuantConnect since 2024
-
----
 
 ### 🏛 Affiliations
 
@@ -76,7 +70,6 @@ Federated learning for CSI feedback compression. CsiNet autoencoder + FedAvg und
 ### 🌐 Connect
 
 📧 [Email](mailto:nooptanio2007@gmail.com)
-💼 [LinkedIn](https://linkedin.com/in/TON_PROFILE)
 🎓 [Google Scholar](https://scholar.google.com/citations?user=TON_ID)
 📍 Taipei, Taiwan · 🇫🇷 🇬🇧 🇹🇼 
 
