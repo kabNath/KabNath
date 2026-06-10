@@ -53,9 +53,9 @@ Federated learning for CSI feedback compression. CsiNet autoencoder + FedAvg und
 Regime detection, risk allocation and live health monitoring for systematic trading systems — the open-sourced **production layer** of a live book. Six-indicator regime classifier (BULL/NEUTRAL/BEAR/CRISIS) with hard crisis gates, inverse-volatility weighting with portfolio vol targeting, and a monitoring battery with a trailing-drawdown kill-switch.
 **Result:** explainable-by-construction regime calls · fail-safe `tradeable` flag for automated halts · 9/9 unit tests passing · CI
 
-#### 💼 AI Capital *(private — flagship system)*
+#### 💼 [AI-Capital](https://github.com/kabNath/AI-Capital) *(public sample — full system private)*
 End-to-end multi-asset systematic trading system on QuantConnect: multi-horizon cross-asset momentum, regime detection, volatility targeting and crisis routing, iterated through 11+ versions under strict out-of-sample validation with bias auditing (look-ahead, weight-cap, vol-estimation pitfalls). Live monitoring, anomaly detection and an investor-relations web platform (Next.js/Vercel).
-**Status:** active paper-trading track record
+**Status:** active paper-trading track record · public repo contains a representative sample of the architecture
 
 #### 🔬 Alpha research — WorldQuant BRAIN
 Systematic factor research on a professional simulation platform; first passing alpha cleared platform evaluation thresholds.
