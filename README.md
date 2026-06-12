@@ -29,7 +29,7 @@ PhD candidate at **National Taipei University of Technology** working on **multi
 
 ## 🛰 AI-native wireless & 6G
 
-#### 🚀 [gpu-accelerated-ai-ran-phy-lab](https://github.com/kabNath/gpu-accelerated-ai-ran-phy-lab) — flagship
+#### 🚀 [gpu-accelerated-ai-ran-phy-lab](https://github.com/kabNath/gpu-accelerated-ai-ran-phy-lab) 
 End-to-end OFDM PHY + AI-RAN stack where every claim is runnable. Real **CUDA C++** MMSE channel estimation (custom kernel + **cuSolver** `Cpotrf`/`Cpotrs` + **cuBLAS** `Cgemm`), a **Sionna** 5G LDPC + TR38.901 TDL BLER link, and link adaptation (OLLA / model-based greedy / model-free learned policy) driven by the *measured* BLER curves.
 **Result:** **133× vs NumPy** on an RTX 4090 (verified to ~1e-4 vs a CPU reference) · model-free policy matches a tuned OLLA / greedy from ACK/NACK feedback alone, at the lowest BLER · figures, green CI, and a `NVIDIA_REVIEW.md` design/verification guide
 
