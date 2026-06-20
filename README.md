@@ -53,6 +53,10 @@ Federated learning for CSI feedback compression: CsiNet autoencoder + FedAvg und
 
 ## 📈 Systematic trading & quantitative ML
 
+#### 🧪 [frix-project](https://github.com/kabNath/frix-project) — *friction-realistic execution benchmark*
+An honest, reproducible benchmark for intraday order execution on real crypto LOB — classical (TWAP/VWAP/POV/Almgren–Chriss) vs **deep RL (PPO/SAC)** vs an **LLM meta-controller**, under one friction model (fees, queue, partial fills, adverse selection).
+**Result (the honest null):** no ML method beats a simple classical schedule on **BTC or ETH** — on ETH, deep RL is *significantly* worse (PPO, p = 0.035). The benchmark caught **four** simulator artifacts that had faked a ~2 bps edge; a training-length ablation rules out undertraining · paired-bootstrap significance · 13 unit tests · CI
+
 #### 🧭 [market-regime-engine](https://github.com/kabNath/market-regime-engine)
 Regime detection, risk allocation and live health monitoring — the open-sourced **production layer** of a systematic book. Six-indicator regime classifier (BULL/NEUTRAL/BEAR/CRISIS) with hard crisis gates, inverse-volatility weighting with portfolio vol targeting, and a monitoring battery with a trailing-drawdown kill-switch.
 **Result:** explainable-by-construction regime calls · fail-safe `tradeable` flag for automated halts · 9/9 unit tests · CI
