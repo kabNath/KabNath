@@ -24,7 +24,13 @@ with Three.js. No build step, no external assets, no network dependency.
 
 ## Run it
 
-Any static file server works (ES modules require http://, not file://):
+**Easiest — single file:** open
+[`dist/autonomous-air-space-ground-ai-infrastructure.html`](dist/autonomous-air-space-ground-ai-infrastructure.html)
+directly in a browser (double-click). Everything — all 94 slides, 65 scenes,
+styles and Three.js — is inlined into that one ~1 MB document; it needs no
+server and no network. Rebuild it with `node tools/build-single-file.mjs`.
+
+**Development version** (separate modules, plus `scene.html` and the docs):
 
 ```bash
 cd presentation
@@ -33,7 +39,7 @@ python3 -m http.server 8899
 ```
 
 WebGL 2 required. Three.js (r170) is vendored in `js/lib/` — the deck runs fully
-offline.
+offline either way.
 
 ## Presenting
 
@@ -77,7 +83,12 @@ presentation/
 │   ├── DECK_OUTLINE.md      table of contents + scene inventory (auto-generated)
 │   ├── PRODUCTION_3D.md     cameras, lighting, materials, asset hierarchy
 │   └── ANIMATION_DIRECTION.md  what animates, rates, reveal choreography
-└── tools/export-docs.mjs    regenerates the auto-generated docs from deck data
+├── dist/
+│   └── autonomous-air-space-ground-ai-infrastructure.html
+│                            single-file offline build (double-click to present)
+└── tools/
+    ├── export-docs.mjs      regenerates the auto-generated docs from deck data
+    └── build-single-file.mjs rebuilds the single-file dist
 ```
 
 ## Design rules the deck follows
