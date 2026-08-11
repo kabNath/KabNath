@@ -13,7 +13,7 @@ export const CLOSING = [
         { t: 'SIMULATION', cls: 'ok', items: [{ t: 'Omniverse / OpenUSD' }, { t: 'Isaac Sim' }, { t: 'Isaac Lab' }, { t: 'SUMO (traffic)' }, { t: 'STK (orbits)' }, { t: 'QGIS (geospatial)' }] },
         { t: 'ROBOTICS', cls: 'accent', items: [{ t: 'ROS 2 (middleware)' }, { t: 'PX4 (flight control)' }, { t: 'MAVLink' }, { t: 'ros2_control' }, { t: 'Nav2 / MoveIt' }] },
         { t: 'AI', cls: 'ai', items: [{ t: 'PyTorch' }, { t: 'CUDA / TensorRT' }, { t: 'LLMs · VLMs' }, { t: 'RL · MARL' }, { t: 'Federated learning' }, { t: 'RAG · vector DB · KG' }] },
-        { t: 'COMMUNICATION', cls: 'accent', items: [{ t: '5G NR · 6G candidates' }, { t: '3GPP NTN Rel-17/18' }, { t: 'RIS' }, { t: 'FSO / optical ISL' }, { t: 'O-RAN' }, { t: 'NVIDIA Sionna' }] },
+        { t: 'COMMUNICATION', cls: 'accent', items: [{ t: '5G NR · 6G candidates' }, { t: '3GPP NTN Rel-17/18' }, { t: 'mmWave' }, { t: 'FSO / optical ISL' }, { t: 'O-RAN' }, { t: 'NVIDIA Sionna' }] },
         { t: 'INFRASTRUCTURE', cls: 'warn', items: [{ t: 'Kubernetes / K3s' }, { t: 'GPU clusters' }, { t: 'Edge servers' }, { t: 'Object storage' }, { t: 'Model registry' }, { t: 'GitOps' }] },
         { t: 'DATA', cls: 'ok', items: [{ t: 'GIS / OSM / GeoJSON' }, { t: 'Telemetry (MCAP)' }, { t: 'Sensor data (LiDAR, RGB, RF)' }, { t: 'Satellite products' }, { t: 'Parquet / Delta' }] },
       ],
@@ -26,7 +26,7 @@ export const CLOSING = [
       { h: 'DELIBERATELY NOT IN SCOPE', tone: 'warn', items: ['Custom silicon', 'Proprietary middleware replacing ROS 2', 'A single monolithic “do everything” model', 'Any autonomous use of force'] },
       { h: 'EXIT PATHS', tone: 'ok', text: 'Each primary choice has a documented replacement path — the interfaces from Phase 1 are what make that possible.' },
     ],
-    tech: ['Omniverse', 'Isaac Sim/Lab', 'ROS 2', 'PX4', 'PyTorch', 'CUDA', 'Sionna', 'NTN', 'RIS', 'Kubernetes', 'GIS'],
+    tech: ['Omniverse', 'Isaac Sim/Lab', 'ROS 2', 'PX4', 'PyTorch', 'CUDA', 'Sionna', 'NTN', 'Kubernetes', 'GIS'],
     metrics: [['6', 'technology families'], ['~35', 'named components'], ['0', 'unproven dependencies']],
     note: 'The differentiator is not the tool list — it is that these tools share one world model, one data platform and one deployment path.',
     spec: {
@@ -138,7 +138,7 @@ export const CLOSING = [
     fitMargin: 0.94,
     stageTag: 'MASTER VISUAL · LIVE 3D',
     caption: 'Everything in this deck, operating simultaneously, in one frame.',
-    tech: ['LEO / NTN', '6G + RIS', 'UAV swarm', 'ground robots', 'edge GPU', 'digital twin', 'RAG + knowledge', 'agentic AI', 'physical AI', 'federated MARL', 'MLOps'],
+    tech: ['LEO / NTN', '6G mesh', 'UAV swarm', 'ground robots', 'edge GPU', 'digital twin', 'RAG + knowledge', 'agentic AI', 'physical AI', 'federated MARL', 'MLOps'],
     metrics: [['15', 'layers'], ['14', 'phases'], ['9', 'validation levels'], ['7', 'loop stages'], ['1', 'platform']],
     note: 'This is not an AI model for drones. It is an autonomous physical AI infrastructure that senses, understands, reasons, learns, plans, acts and adapts — continuously.',
     spec: {

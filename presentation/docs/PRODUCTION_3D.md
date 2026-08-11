@@ -23,7 +23,7 @@ Everything here maps 1:1 to the code:
 |---|---|---|
 | Data / communication | `#35e0ff` cyan | links, packets, sensing volumes, data spines |
 | Learning / digital twin | `#6ef2c0` mint | model updates, twin geometry, "good" states |
-| Generative / agentic AI | `#b07bff` violet | agent orbs, reasoning, RIS, policy flows |
+| Generative / agentic AI | `#b07bff` violet | agent orbs, reasoning, policy flows |
 | Human / energy / orchestration | `#ffb347` amber | operators, task boards, energy, control plane |
 | Failure / safety / risk | `#ff5f70` red | faults, vetoes, degraded assets, outage zones |
 | Space segment | `#9fd8ff` ice | satellites, orbits, NTN links |
@@ -94,7 +94,7 @@ uav()                      satellite()                groundRobot()
 | `terrain({w,h,amp,seed,basin})` | displaced plane, flat shaded, with a wireframe overlay |
 | `earth({radius, at})` | dark globe + graticule + 40 real city-light coordinates + fresnel atmosphere shader |
 | `orbitShell({radius, planes, per, inc})` | inclined orbital planes with ring guides and orbiting satellites |
-| `groundStation()`, `cellTower({dead, cov})`, `risPanel({nx,ny})`, `serverRack()`, `gpuPod()` | infrastructure; `risPanel` animates per-element phase |
+| `groundStation()`, `cellTower({dead, cov})`, `serverRack()`, `gpuPod()` | ground infrastructure and compute |
 | `human()`, `vehicles()` | scale reference and life |
 | `agentOrb({label, color})` | icosahedron core + wireframe cage + two counter-rotating rings |
 | `knowledgeGraph()`, `dataCloud()` | knowledge and embedding visuals |

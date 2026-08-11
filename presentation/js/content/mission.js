@@ -113,12 +113,12 @@ export const MISSION = [
   }),
 
   M(10, 'T+40m', 'Communication resources are optimised', {
-    sub: 'The learned MARL policy reallocates trajectories, power, channels and altitudes; an RIS panel is configured to reach a district shadowed by rubble.',
-    left: [{ h: 'WHAT HAPPENS', items: ['Trajectories shifted toward priority zones', 'Transmit power and channels reallocated', 'Altitudes traded off: coverage vs path loss', 'RIS phases configured to bypass a blocked street canyon'] }],
+    sub: 'The learned MARL policy reallocates trajectories, power, channels and altitudes; a dedicated relay UAV is repositioned to reach a district shadowed by rubble.',
+    left: [{ h: 'WHAT HAPPENS', items: ['Trajectories shifted toward priority zones', 'Transmit power and channels reallocated', 'Altitudes traded off: coverage vs path loss', 'A dedicated relay UAV re-tasked to cover a blocked street canyon'] }],
     right: [{ h: 'RESULT', tone: 'ok', kv: [['throughput', '+86% vs initial lattice'], ['priority coverage', '92%'], ['fairness', '0.78 Jain index'], ['energy', 'within sortie plan']] }],
-    metrics: [['+86%', 'throughput'], ['92%', 'priority coverage'], ['&lt;2 s', 'reallocation decision'], ['1', 'RIS reconfigured']],
+    metrics: [['+86%', 'throughput'], ['92%', 'priority coverage'], ['&lt;2 s', 'reallocation decision'], ['1', 'relay UAV repositioned']],
     note: 'This is where multi-agent reinforcement learning pays for itself: the coupling between agents is real and the search space is too large for hand-tuning.',
-    spec: { visual: 'RIS panel with shimmering elements bouncing a violet beam into a shadowed district, plus three live gauges (throughput, coverage, fairness).', animation: ['RIS elements shimmer as phases update', 'Gauges climb and hold', 'Reflected beam packets flow toward users'], message: 'Learned joint policies outperform hand-tuned allocation under coupling.' },
+    spec: { visual: 'A dedicated relay UAV hovering at the canyon edge, beaming a violet link into the shadowed district, plus three live gauges (throughput, coverage, fairness).', animation: ['Relay UAV bobs on station, rotors spinning', 'Gauges climb and hold', 'Relay beam packets flow toward users'], message: 'Learned joint policies outperform hand-tuned allocation under coupling.' },
   }),
 
   M(11, 'T+45m', 'Ground robots assist the search', {

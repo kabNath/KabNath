@@ -53,7 +53,7 @@ export function toolConstellation() {
     ['SIMULATION', ['Omniverse', 'Isaac Sim', 'Isaac Lab', 'SUMO', 'STK', 'QGIS'], C.nv, 0],
     ['ROBOTICS', ['ROS 2', 'PX4', 'MAVLink'], C.cyan, 1],
     ['AI', ['PyTorch', 'CUDA', 'LLM/VLM', 'RL', 'MARL', 'FL', 'RAG'], C.violet, 2],
-    ['COMMS', ['5G', '6G', 'NTN', 'RIS', 'Sionna', 'O-RAN'], 0x7fd8ff, 3],
+    ['COMMS', ['5G', '6G', 'NTN', 'Sionna', 'O-RAN'], 0x7fd8ff, 3],
     ['INFRA', ['Kubernetes', 'GPU cluster', 'Edge', 'Cloud'], C.amber, 4],
     ['DATA', ['GIS', 'telemetry', 'sensors', 'satellite'], C.mint, 5],
   ];
@@ -345,8 +345,6 @@ export function commGlobal() {
   cityG.add(K.serverRack({ at: [16, 0, 14], trim: C.nv }));
   cityG.add(K.label('EDGE SERVERS', { at: [16, 6, 14], size: 1.2, color: '#d8f59a' }));
   for (let i = 0; i < 8; i++) cityG.add(K.human(0x9fd8ff, 1.3).translateX(-9 + i * 2.6).translateZ(20));
-  const ris = K.risPanel(c, { nx: 10, ny: 7, cell: 0.62, at: [19, 9, -13], rot: [0, -0.85, 0], scale: 1.25 });
-  c.add(ris, K.label('RIS', { at: [19, 13, -13], size: 1.5, color: '#dcc4ff' }));
   K.swarm(c, { count: 8, altitude: 15, spread: 34, mesh: true, meshRange: 20, scale: 1.35 });
 
   const links = [
@@ -354,8 +352,6 @@ export function commGlobal() {
     [sat2.position, [5, 15, 3], 'dashed', C.ice, 'SAT→UAV (Ku NTN)', 0.08],
     [[-9, 15, -3], [10, 15, 7], 'beam', C.cyan, 'UAV↔UAV mesh', 0.1],
     [[3, 15, 2], [-14, 4, -11], 'beam', C.mint, 'UAV→TOWER', 0.1],
-    [[0, 4, -4], [19, 9, -13], 'dashed', C.violet, 'TOWER→RIS', 0.08],
-    [[19, 9, -13], [-2, -1.4, 23], 'beam', C.violet, 'RIS→USERS', 0.09],
     [sat1.position, sat2.position, 'beam', 0xffffff, 'OPTICAL ISL', 0.05],
   ];
   links.forEach(([p, q, st, col, lab, w], i) => K.link(c, p, q, {

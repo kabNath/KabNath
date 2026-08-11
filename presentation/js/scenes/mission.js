@@ -199,9 +199,11 @@ export function mission(opts = {}) {
   }
 
   if (on('optimise')) {
-    const ris = K.risPanel(c, { nx: 10, ny: 7, cell: 0.62, at: [26, 12, -22], rot: [0, -0.8, 0], scale: 1.3 });
-    c.add(ris, K.label('RIS  ·  reflect around rubble', { at: [26, 17, -22], size: 1.1, color: '#dcc4ff' }));
-    K.link(c, [26, 12, -22], [10, 1.6, 12], { style: 'beam', color: C.violet, width: 0.09, opacity: 0.45, count: 3, speed: 0.4 });
+    const relay = K.uav({ at: [26, 15, -22], scale: 1.5, trim: C.violet, led: C.violet });
+    c.add(relay, K.label('DEDICATED RELAY UAV  ·  covers the shadowed canyon', { at: [26, 19, -22], size: 1.1, color: '#dcc4ff' }));
+    K.animateRotors(c, [relay]);
+    c.tick((t) => { relay.position.y = 15 + Math.sin(t * 1.1) * 0.4; });
+    K.link(c, [26, 15, -22], [10, 1.6, 12], { style: 'beam', color: C.violet, width: 0.09, opacity: 0.45, count: 3, speed: 0.4 });
     ['throughput', 'coverage', 'fairness'].forEach((g, i) => c.add(K.gauge(c, {
       at: [-16 + i * 8, 30, 22], size: 4.4, value: [0.86, 0.92, 0.78][i], color: ['#35e0ff', '#6ef2c0', '#ffb347'][i], label: g, phase: i,
     })));
@@ -311,7 +313,6 @@ export function useCase(opts = {}) {
     cov.position.set(-20, 10, 4); cov.rotation.x = Math.PI;
     c.add(cov);
     for (let i = 0; i < 10; i++) c.add(K.human(0x9fd8ff, 1.3).translateX(-30 + i * 3).translateZ(20));
-    const ris = K.risPanel(c, { nx: 9, ny: 6, cell: 0.6, at: [22, 12, -18], rot: [0, -0.8, 0], scale: 1.3 }); c.add(ris);
     label('TELECOMMUNICATIONS  ·  coverage where the network died', [0, 30, 14], '#8ff5d0', 1.7);
     label('AERIAL BASE STATION', [-20, 25, 4], '#8ff5d0', 1.1);
   } else if (v === 'agriculture') {

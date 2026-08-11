@@ -537,7 +537,7 @@ The platform is a vertical information column: any tier can sense, relay, comput
 Camera (30,26,54) → (0,24,0), 48° FOV, fog 80/260. Tier label sprites at x=−26 so they never overlap the assets.
 
 
-**KEY TECHNOLOGIES:** GEO relay · LEO imaging + NTN · HAPS · UAV aerial base stations · 5G/6G + RIS · FSO · gateways · edge GPU · IoT
+**KEY TECHNOLOGIES:** GEO relay · LEO imaging + NTN · HAPS · UAV aerial base stations · 5G/6G access · FSO · gateways · edge GPU · IoT
 
 **METRICS:** 7 tiers · 2 flow directions · ms → s latency budget by tier · km → 1000s km link range span
 
@@ -656,7 +656,7 @@ This one picture is the contract for the rest of the deck: every following slide
 Camera (46,34,58) → (0,17,0), 46° FOV, fog 90/300. Slab opacity 0.42 so eight layers remain legible through each other.
 
 
-**KEY TECHNOLOGIES:** ROS 2 · PX4 · Isaac Sim · Isaac Lab · Omniverse · 3GPP NTN · RIS · Vector DB · Knowledge Graph · VLM/LLM · MARL · Federated Learning · Kubernetes · CUDA
+**KEY TECHNOLOGIES:** ROS 2 · PX4 · Isaac Sim · Isaac Lab · Omniverse · 3GPP NTN · Vector DB · Knowledge Graph · VLM/LLM · MARL · Federated Learning · Kubernetes · CUDA
 
 **METRICS:** 15 layers · 4 cross-cutting planes · 2 closed loops (control + learning) · 1 shared world model
 
@@ -982,26 +982,24 @@ Autonomy is only as good as the bodies it commands; envelopes are published as c
 - **Layout:** `standard` (3D + diagram)
 - **Scene module:** `l4Comms`
 - **Subtitle:** Purpose: keep every agent reachable, every observation deliverable and every decision timely across space, air and ground, with graceful degradation instead of failure.
-- **Stage caption:** Ka feeder · NTN Ku sat↔UAV · UAV mesh · fronthaul · RIS reflection · 5G/6G access · optical inter-satellite link.
+- **Stage caption:** Ka feeder · NTN Ku sat↔UAV · UAV mesh · fronthaul · 5G/6G access · optical inter-satellite link.
 
 **VISUAL**
-Global-to-local communication scene where each link type is visually distinct: solid beams for data, dashed marching lines for control, thin white line for optical ISL, violet for RIS-reflected paths.
+Global-to-local communication scene where each link type is visually distinct: solid beams for data, dashed marching lines for control, a thin white line for the optical ISL.
 
 **3D SCENE**
-Two satellites at 46–48 m translating on X; 6-UAV mesh at 22 m with 26 m mesh range; gateway; three towers with coverage cones; a 10 × 7 RIS panel with per-cell phase animation; six ground users.
+Two satellites at 46–48 m translating on X; 6-UAV mesh at 22 m with 26 m mesh range; gateway; three towers with coverage cones; six ground users.
 
 **COMPONENTS**
-- 7 labelled link types
-- RIS with animated element phases
+- 6 labelled link types
 - Coverage cones
 - Gateway + towers + users
 
 **DATA FLOW**
-Sat→ground feeder, sat→UAV NTN, UAV↔UAV mesh, UAV→tower fronthaul, tower→RIS→users, direct access, satellite↔satellite optical.
+Sat→ground feeder, sat→UAV NTN, UAV↔UAV mesh, UAV→tower fronthaul, direct 5G/6G access, satellite↔satellite optical.
 
 **ANIMATION**
 - Packets march at different rates per link class
-- RIS cells shimmer as phases update
 - Satellites drift, swarm re-forms mesh
 
 **TEXT**
@@ -1021,7 +1019,7 @@ Connectivity is an optimisation problem solved continuously by a learning agent,
 
 - *PROCESSING*
   - Topology and relay selection
-  - Beamforming, RIS phase configuration
+  - Beamforming and interference coordination
   - Power / bandwidth / MCS allocation
   - Handover between terrestrial and NTN
 
@@ -1043,16 +1041,15 @@ Connectivity is an optimisation problem solved continuously by a learning agent,
 - `leo2` LEO satellite — optical ISL peer
 - `uav` UAV relay / ABS — aerial base station
 - `mesh` UAV↔UAV mesh — multi-hop, self-healing
-- `ris` RIS panel — passive beam steering
 - `gw` Gateway / ground station — feeder + core uplink
 - `gnb` 5G/6G gNB — terrestrial access
 - `ue` Users & robots — UE / device
 - `core` Core + edge UPF — routing, slicing
 - `orch` Comms agent — topology + power control
 
-Edges: leo→uav (Ku NTN), leo→gw (Ka feeder), leo→leo2 (FSO ISL), uav→mesh, mesh→gnb (fronthaul), gnb→ue, ris→ue (reflected), gnb→ris, gw→core, core→orch, orch→mesh
+Edges: leo→uav (Ku NTN), leo→gw (Ka feeder), leo→leo2 (FSO ISL), uav→mesh, mesh→gnb (fronthaul), gnb→ue, gw→core, core→orch, orch→mesh
 
-**KEY TECHNOLOGIES:** 3GPP NTN (Rel-17/18) · 5G NR / 6G candidates · RIS · mmWave · FSO / optical ISL · O-RAN · NVIDIA Sionna · TR 38.901 channel models
+**KEY TECHNOLOGIES:** 3GPP NTN (Rel-17/18) · 5G NR / 6G candidates · mmWave · FSO / optical ISL · O-RAN · NVIDIA Sionna · TR 38.901 channel models
 
 **METRICS:** >100 Mb/s aggregate user throughput · <50 ms edge RTT · <1% in-mission outage · n+1 independent paths per critical flow
 
@@ -2070,7 +2067,7 @@ Standards-based, GPU-first, with one authority per cross-cutting concern.
 
 - *RISK* — Tool sprawl is the main failure mode of platforms like this. Each family has one designated primary tool and an explicit exit path.
 
-**KEY TECHNOLOGIES:** Omniverse · Isaac Sim/Lab · SUMO · STK · QGIS · ROS 2 · PX4 · PyTorch · CUDA · Sionna · RIS · Kubernetes
+**KEY TECHNOLOGIES:** Omniverse · Isaac Sim/Lab · SUMO · STK · QGIS · ROS 2 · PX4 · PyTorch · CUDA · Sionna · Kubernetes
 
 **NOTE:** A technology map is only useful if it also states what is NOT in the platform, and how each choice could be replaced.
 
@@ -2475,31 +2472,29 @@ A twin is a measured instrument with a published error budget, not a visualisati
 - **Kicker:** ACT V · COMMUNICATION ARCHITECTURE
 - **Layout:** `full`
 - **Scene module:** `commGlobal`
-- **Subtitle:** LEO constellation → UAV swarm → 5G/6G towers → RIS → ground users and edge servers, with satellite-to-satellite optical links overhead. Each link type has its own visual signature.
-- **Stage caption:** SAT→GROUND (Ka) · SAT→UAV (Ku NTN) · UAV↔UAV mesh · UAV→TOWER fronthaul · TOWER→RIS → USERS · OPTICAL ISL.
+- **Subtitle:** LEO constellation → UAV swarm → 5G/6G towers → ground users and edge servers, with satellite-to-satellite optical links overhead. Each link type has its own visual signature.
+- **Stage caption:** SAT→GROUND (Ka) · SAT→UAV (Ku NTN) · UAV↔UAV mesh · UAV→TOWER fronthaul · 5G/6G ACCESS · OPTICAL ISL.
 
 **VISUAL**
-Full-bleed: Earth limb and LEO shell at the top, a UAV mesh in the middle, and a city with towers, RIS, gateway, edge racks and users at the bottom — all links labelled in 3D.
+Full-bleed: Earth limb and LEO shell at the top, a UAV mesh in the middle, and a city with towers, gateway, edge racks and users at the bottom — all links labelled in 3D.
 
 **3D SCENE**
-Earth r=38 centred at (0,−42,−10); 2 × 6 ambient satellite shell at r=48 plus two detailed satellites at 29–32 m that carry the labelled links; 8-UAV mesh at 15 m; 10 × 7 RIS panel with per-element phase animation; city, gateway, edge rack, 8 users.
+Earth r=38 centred at (0,−42,−10); 2 × 6 ambient satellite shell at r=48 plus two detailed satellites at 29–32 m that carry the labelled links; 8-UAV mesh at 15 m; city, gateway, edge rack, 8 users.
 
 **COMPONENTS**
 - LEO constellation
 - UAV mesh
 - Towers with coverage cones
-- RIS
 - Gateway
 - Edge racks
 - Users
 
 **DATA FLOW**
-Six labelled flows spanning space, air and ground, plus an inter-satellite optical link.
+Five labelled flows spanning space, air and ground, including an inter-satellite optical link.
 
 **ANIMATION**
 - Satellites orbit
 - Packets march at per-link rates
-- RIS elements shimmer as phases update
 - Mesh re-forms as UAVs move
 
 **TEXT**
@@ -2509,12 +2504,12 @@ Title and link legend only; the labels live in the 3D scene.
 Space, air and ground are one routable network, continuously optimised rather than statically planned.
 
 **PRODUCTION**
-Camera 46° FOV authored at (0,18,58) → (0,14,0), then auto-framed. White for the optical ISL, violet for RIS paths, mint for fronthaul, ice for space links.
+Camera 46° FOV authored at (0,18,58) → (0,14,0), then auto-framed. White for the optical ISL, mint for fronthaul, ice for space links.
 
 
-**KEY TECHNOLOGIES:** 3GPP NTN Rel-17/18 · 5G NR · 6G candidates · RIS · mmWave · FSO · O-RAN · Sionna · TR 38.901
+**KEY TECHNOLOGIES:** 3GPP NTN Rel-17/18 · 5G NR · 6G candidates · mmWave · FSO · O-RAN · Sionna · TR 38.901
 
-**METRICS:** 6 distinct link types · >100 Mb/s aggregate user rate · <50 ms edge RTT · n+1 paths per critical flow
+**METRICS:** 5 distinct link types · >100 Mb/s aggregate user rate · <50 ms edge RTT · n+1 paths per critical flow
 
 **NOTE:** Every node in this picture is a routing decision the communication agent makes and re-makes continuously.
 
@@ -4502,15 +4497,15 @@ Ranked, justified priorities — not undifferentiated “coverage”.
 - **Kicker:** MISSION STEP 10 / 17 · T+40m
 - **Layout:** `standard`
 - **Scene module:** `mission` `{"step":10}`
-- **Subtitle:** The learned MARL policy reallocates trajectories, power, channels and altitudes; an RIS panel is configured to reach a district shadowed by rubble.
+- **Subtitle:** The learned MARL policy reallocates trajectories, power, channels and altitudes; a dedicated relay UAV is repositioned to reach a district shadowed by rubble.
 
 **VISUAL**
-RIS panel with shimmering elements bouncing a violet beam into a shadowed district, plus three live gauges (throughput, coverage, fairness).
+A dedicated relay UAV hovering at the canyon edge, beaming a violet link into the shadowed district, plus three live gauges (throughput, coverage, fairness).
 
 **ANIMATION**
-- RIS elements shimmer as phases update
+- Relay UAV bobs on station, rotors spinning
 - Gauges climb and hold
-- Reflected beam packets flow toward users
+- Relay beam packets flow toward users
 
 **TECHNICAL MESSAGE**
 Learned joint policies outperform hand-tuned allocation under coupling.
@@ -4522,7 +4517,7 @@ Learned joint policies outperform hand-tuned allocation under coupling.
   - Trajectories shifted toward priority zones
   - Transmit power and channels reallocated
   - Altitudes traded off: coverage vs path loss
-  - RIS phases configured to bypass a blocked street canyon
+  - A dedicated relay UAV re-tasked to cover a blocked street canyon
 
 **RIGHT COLUMN — outputs / decisions**
 
@@ -4532,7 +4527,7 @@ Learned joint policies outperform hand-tuned allocation under coupling.
   - `fairness` 0.78 Jain index
   - `energy` within sortie plan
 
-**METRICS:** +86% throughput · 92% priority coverage · <2 s reallocation decision · 1 RIS reconfigured
+**METRICS:** +86% throughput · 92% priority coverage · <2 s reallocation decision · 1 relay UAV repositioned
 
 **NOTE:** This is where multi-agent reinforcement learning pays for itself: the coupling between agents is real and the search space is too large for hand-tuning.
 
@@ -4923,13 +4918,13 @@ Cross-domain autonomy converts a blackout into a managed operation.
 - **Kicker:** USE CASE 2 / 10
 - **Layout:** `standard` (3D + diagram)
 - **Scene module:** `useCase` `{"variant":"telecom"}`
-- **Subtitle:** Aerial base stations and RIS turn coverage into something that can be deployed in minutes and moved as demand moves.
+- **Subtitle:** Aerial base stations turn coverage into something that can be deployed in minutes and moved as demand moves.
 
 **VISUAL**
-City with one dead tower, an aerial base station with a wide mint coverage cone, an RIS panel and connected users.
+City with one dead tower, an aerial base station with a wide mint coverage cone, and connected users.
 
 **ANIMATION**
-- Coverage cone breathes; RIS elements shimmer
+- Coverage cone breathes; user signal bars light up as they attach
 
 **TECHNICAL MESSAGE**
 Coverage becomes a deployable, steerable resource.
@@ -4939,7 +4934,7 @@ Coverage becomes a deployable, steerable resource.
 
 - *WHY NOW*
   - 3GPP NTN makes non-terrestrial access standard, not exotic
-  - RIS makes blocked geometry recoverable without new sites
+  - UAV relays make shadowed streets recoverable without new sites
   - Operators are measured on resilience, not just peak speed
 
 **RIGHT COLUMN — outputs / decisions**
@@ -4952,8 +4947,8 @@ Coverage becomes a deployable, steerable resource.
 **TECHNICAL DIAGRAM** (`chain` — PROBLEM → AI DECISION → PHYSICAL ACTION → RESULT)
 
 - PROBLEM — cell outage, event-driven demand spikes, shadowed streets, rural gaps
-- AI DECISION — predict demand and channel quality, choose altitude, power, RIS phases
-- PHYSICAL ACTION — UAV takes station as an aerial base station; RIS reconfigures
+- AI DECISION — predict demand and channel quality, choose station altitude, power and channels
+- PHYSICAL ACTION — UAV takes station as an aerial base station; relays re-task as demand moves
 - RESULT — coverage and capacity restored, users served, SLA maintained
 
 **METRICS:** minutes to deploy coverage · >100 Mb/s aggregate capacity · +86% throughput after optimisation
@@ -5380,11 +5375,11 @@ Standard, provable components — integrated by architecture rather than by adap
 - **SIMULATION**: Omniverse / OpenUSD · Isaac Sim · Isaac Lab · SUMO (traffic) · STK (orbits) · QGIS (geospatial)
 - **ROBOTICS**: ROS 2 (middleware) · PX4 (flight control) · MAVLink · ros2_control · Nav2 / MoveIt
 - **AI**: PyTorch · CUDA / TensorRT · LLMs · VLMs · RL · MARL · Federated learning · RAG · vector DB · KG
-- **COMMUNICATION**: 5G NR · 6G candidates · 3GPP NTN Rel-17/18 · RIS · FSO / optical ISL · O-RAN · NVIDIA Sionna
+- **COMMUNICATION**: 5G NR · 6G candidates · 3GPP NTN Rel-17/18 · mmWave · FSO / optical ISL · O-RAN · NVIDIA Sionna
 - **INFRASTRUCTURE**: Kubernetes / K3s · GPU clusters · Edge servers · Object storage · Model registry · GitOps
 - **DATA**: GIS / OSM / GeoJSON · Telemetry (MCAP) · Sensor data (LiDAR, RGB, RF) · Satellite products · Parquet / Delta
 
-**KEY TECHNOLOGIES:** Omniverse · Isaac Sim/Lab · ROS 2 · PX4 · PyTorch · CUDA · Sionna · NTN · RIS · Kubernetes · GIS
+**KEY TECHNOLOGIES:** Omniverse · Isaac Sim/Lab · ROS 2 · PX4 · PyTorch · CUDA · Sionna · NTN · Kubernetes · GIS
 
 **METRICS:** 6 technology families · ~35 named components · 0 unproven dependencies
 
@@ -5571,7 +5566,7 @@ One continuously learning autonomous system spanning space, air, ground, edge an
 Camera 48° FOV authored at (0,26,96) → (0,22,0), auto-framed with fitMargin 0.94 to fill the stage. Fog is derived from the content bounding sphere. Exposure 1.16. If rendered as video: 20 s orbit, no cuts, titles fading in over the first 3 s.
 
 
-**KEY TECHNOLOGIES:** LEO / NTN · 6G + RIS · UAV swarm · ground robots · edge GPU · digital twin · RAG + knowledge · agentic AI · physical AI · federated MARL · MLOps
+**KEY TECHNOLOGIES:** LEO / NTN · 6G mesh · UAV swarm · ground robots · edge GPU · digital twin · RAG + knowledge · agentic AI · physical AI · federated MARL · MLOps
 
 **METRICS:** 15 layers · 14 phases · 9 validation levels · 7 loop stages · 1 platform
 

@@ -35,17 +35,17 @@ export const USECASES = [
   }),
 
   U('telecom', 2, 'Telecommunications — coverage on demand', {
-    sub: 'Aerial base stations and RIS turn coverage into something that can be deployed in minutes and moved as demand moves.',
+    sub: 'Aerial base stations turn coverage into something that can be deployed in minutes and moved as demand moves.',
     problem: 'cell outage, event-driven demand spikes, shadowed streets, rural gaps',
-    decision: 'predict demand and channel quality, choose altitude, power, RIS phases',
-    action: 'UAV takes station as an aerial base station; RIS reconfigures',
+    decision: 'predict demand and channel quality, choose station altitude, power and channels',
+    action: 'UAV takes station as an aerial base station; relays re-task as demand moves',
     result: 'coverage and capacity restored, users served, SLA maintained',
     stageTag: 'TELECOMMUNICATIONS',
-    left: [{ h: 'WHY NOW', items: ['3GPP NTN makes non-terrestrial access standard, not exotic', 'RIS makes blocked geometry recoverable without new sites', 'Operators are measured on resilience, not just peak speed'] }],
+    left: [{ h: 'WHY NOW', items: ['3GPP NTN makes non-terrestrial access standard, not exotic', 'UAV relays make shadowed streets recoverable without new sites', 'Operators are measured on resilience, not just peak speed'] }],
     right: [{ h: 'BUYER', tone: 'ai', items: ['Mobile network operators', 'Neutral-host and tower companies', 'Event and industrial private-network providers'] }],
     metrics: [['minutes', 'to deploy coverage'], ['&gt;100 Mb/s', 'aggregate capacity'], ['+86%', 'throughput after optimisation']],
     note: 'This is the most direct commercial path: the same platform, sold as coverage-as-a-service.',
-    spec: { visual: 'City with one dead tower, an aerial base station with a wide mint coverage cone, an RIS panel and connected users.', animation: ['Coverage cone breathes; RIS elements shimmer'], message: 'Coverage becomes a deployable, steerable resource.' },
+    spec: { visual: 'City with one dead tower, an aerial base station with a wide mint coverage cone, and connected users.', animation: ['Coverage cone breathes; user signal bars light up as they attach'], message: 'Coverage becomes a deployable, steerable resource.' },
   }),
 
   U('agriculture', 3, 'Agriculture — decisions per square metre', {

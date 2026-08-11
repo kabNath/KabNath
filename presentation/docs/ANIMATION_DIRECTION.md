@@ -41,7 +41,7 @@ function:
 | L1 physical world | vehicles driving, sea swell, ship transiting |
 | L2 sensing | LiDAR fan rotating, camera scan bar sweeping, radar/RF cones breathing, satellite swath sweeping ±18 m |
 | L3 physical agents | rotors, LiDAR, a vehicle crossing the apron |
-| L4 communication | per-link packet rates differ by link class; RIS elements shimmer as phases update |
+| L4 communication | per-link packet rates differ by link class |
 | L5 edge computing | packets up and down the compute stack; latency bars glowing by tier |
 | L6 digital twin | the twin UAV mirrors the real UAV *exactly*; sync badge pulses at 1.6 Hz |
 | L7 data platform | source packets fall into ingest, consumer links pull outward |
@@ -64,7 +64,7 @@ state: a seismic ring expands (step 1), "NO SERVICE" labels blink (2), a satelli
 footprint sweeps (3), the agent reasoning panel appears (4), UAVs rise in a line
 formation with ascent plumes (5), coverage cones and user signal bars turn mint (6),
 LiDAR fans scan and the scanned wireframe grows (7), the twin lights up (8),
-priority discs pulse (9), RIS elements shimmer and gauges climb (10), robots
+priority discs pulse (9), the relay UAV takes station and gauges climb (10), robots
 traverse rubble and a survivor marker pulses (11), operator panels appear (12), one
 UAV descends with a red fault label while the swarm re-forms (13), the coverage
 disc breathes and city lights shift from ember to cyan (14), aircraft drift back to

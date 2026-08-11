@@ -174,9 +174,6 @@ export function l4Comms() {
     c.add(tw);
     return tw;
   });
-  const ris = K.risPanel(c, { nx: 10, ny: 7, cell: 0.62, at: [16, 11, -24], rot: [0, -0.7, 0], scale: 1.4 });
-  c.add(ris);
-  c.add(K.label('RIS  ·  passive beam steering', { at: [16, 16, -24], size: 1.3, color: '#dcc4ff' }));
   for (let i = 0; i < 6; i++) c.add(K.human(0x9fd8ff, 1.3).translateX(-6 + i * 4).translateZ(24));
 
   const L = [
@@ -184,8 +181,6 @@ export function l4Comms() {
     { a: [22, 46, 10], b: [4, 22, 4], t: 'SAT→UAV  NTN Ku', st: 'dashed', col: C.ice },
     { a: [-8, 22, -4], b: [10, 22, 8], t: 'UAV↔UAV  mesh', st: 'beam', col: C.cyan, w: 0.1 },
     { a: [4, 22, 4], b: [-14, 9, -14], t: 'UAV→TOWER  fronthaul', st: 'beam', col: C.mint, w: 0.11 },
-    { a: [6, 9, -4], b: [16, 11, -24], t: 'TOWER→RIS', st: 'dashed', col: C.violet },
-    { a: [16, 11, -24], b: [0, 1.6, 24], t: 'RIS→USERS  reflected', st: 'beam', col: C.violet, w: 0.09 },
     { a: [24, 9, 6], b: [0, 1.6, 24], t: '5G/6G access', st: 'beam', col: C.amber, w: 0.09 },
   ];
   L.forEach((l, i) => K.link(c, l.a, l.b, {

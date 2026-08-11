@@ -237,7 +237,7 @@ export const OPENING = [
     scene: 'earthToEdgeStack',
     stageTag: 'EARTH → EDGE · LIVE',
     caption: 'Vertical spine = platform bus (up: observations, down: commands + model updates). Horizontal links = peer coordination inside each tier.',
-    tech: ['GEO relay', 'LEO imaging + NTN', 'HAPS', 'UAV aerial base stations', '5G/6G + RIS', 'FSO', 'gateways', 'edge GPU', 'IoT'],
+    tech: ['GEO relay', 'LEO imaging + NTN', 'HAPS', 'UAV aerial base stations', '5G/6G access', 'FSO', 'gateways', 'edge GPU', 'IoT'],
     metrics: [['7', 'tiers'], ['2', 'flow directions'], ['ms → s', 'latency budget by tier'], ['km → 1000s km', 'link range span']],
     note: 'Every later slide is a zoom into one tier or one flow of this single picture.',
     spec: {
@@ -301,7 +301,7 @@ export const OPENING = [
     scene: 'masterArchitecture',
     stageTag: 'MASTER ARCHITECTURE · LIVE 3D',
     caption: 'Left spine = SENSE (observations rising). Right spine = ACT (decisions descending). Icons mark the layer where each asset class physically lives.',
-    tech: ['ROS 2', 'PX4', 'Isaac Sim', 'Isaac Lab', 'Omniverse', '3GPP NTN', 'RIS', 'Vector DB', 'Knowledge Graph', 'VLM/LLM', 'MARL', 'Federated Learning', 'Kubernetes', 'CUDA'],
+    tech: ['ROS 2', 'PX4', 'Isaac Sim', 'Isaac Lab', 'Omniverse', '3GPP NTN', 'Vector DB', 'Knowledge Graph', 'VLM/LLM', 'MARL', 'Federated Learning', 'Kubernetes', 'CUDA'],
     metrics: [['15', 'layers'], ['4', 'cross-cutting planes'], ['2', 'closed loops (control + learning)'], ['1', 'shared world model']],
     note: 'Read it as a loop, not a stack: L15 deployment feeds L1 the physical world, which is sensed again by L2 — the system never leaves the loop.',
     spec: {

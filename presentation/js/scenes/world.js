@@ -285,7 +285,7 @@ export function earthToEdgeStack() {
     { y: 46, t: 'LEO CONSTELLATION', s: 'imaging · NTN backhaul' },
     { y: 34, t: 'HAPS / UPPER AIR', s: 'persistent relay' },
     { y: 25, t: 'UAV SWARM', s: 'aerial base stations · sensing' },
-    { y: 16, t: '6G / NTN ACCESS', s: 'mesh · RIS · optical' },
+    { y: 16, t: '6G / NTN ACCESS', s: 'mesh · relays · optical' },
     { y: 9, t: 'GROUND STATIONS & TOWERS', s: 'gateway · fronthaul' },
     { y: 3, t: 'CITIES · IoT · ROBOTS · HUMANS', s: 'the physical world' },
   ];

@@ -687,41 +687,6 @@ export function cellTower(opts = {}) {
   return g;
 }
 
-export function risPanel(ctx, opts = {}) {
-  const g = new THREE.Group();
-  const nx = opts.nx ?? 8, ny = opts.ny ?? 6, cell = opts.cell ?? 0.42;
-  const geo = new THREE.PlaneGeometry(cell * 0.86, cell * 0.86);
-  const mesh = new THREE.InstancedMesh(geo, glow(opts.color ?? 0xb07bff, 0.85), nx * ny);
-  const m = new THREE.Matrix4();
-  const cells = [];
-  let i = 0;
-  for (let x = 0; x < nx; x++) {
-    for (let y = 0; y < ny; y++) {
-      const px = (x - (nx - 1) / 2) * cell, py = (y - (ny - 1) / 2) * cell;
-      cells.push({ px, py, ph: (x + y) * 0.6 });
-      m.compose(new THREE.Vector3(px, py, 0), new THREE.Quaternion(), new THREE.Vector3(1, 1, 1));
-      mesh.setMatrixAt(i++, m);
-    }
-  }
-  mesh.instanceMatrix.needsUpdate = true;
-  const frame = new THREE.Mesh(new THREE.BoxGeometry(nx * cell + 0.3, ny * cell + 0.3, 0.1), solid(0x1a2436, { metalness: 0.8 }));
-  frame.position.z = -0.1;
-  g.add(mesh, frame);
-  const col = new THREE.Color();
-  ctx.tick((t) => {
-    for (let k = 0; k < cells.length; k++) {
-      const v = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * 2.2 + cells[k].ph));
-      col.setRGB(0.55 * v, 0.3 * v, v);
-      mesh.setColorAt(k, col);
-    }
-    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
-  });
-  if (opts.at) g.position.set(...opts.at);
-  if (opts.rot) g.rotation.set(...opts.rot);
-  g.scale.setScalar(opts.scale ?? 1);
-  return g;
-}
-
 export function serverRack(opts = {}) {
   const g = new THREE.Group();
   const h = opts.h ?? 4.4;
