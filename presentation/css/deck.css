@@ -145,10 +145,10 @@ body::before {
 .s-badge { display: inline-block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em; color: var(--mint); border: 1px solid rgba(110, 242, 192, .38); border-radius: 3px; padding: 4px 8px; background: rgba(110, 242, 192, .07); }
 
 /* stage */
-.s-stage { grid-area: stage; position: relative; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, #060b15, #04070d); box-shadow: var(--shadow); min-height: 0; display: flex; flex-direction: column; }
+.s-stage { grid-area: stage; position: relative; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, #0a1424, #060b16); box-shadow: var(--shadow); min-height: 0; display: flex; flex-direction: column; }
 .s-stage::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(0,0,0,.55));
+  background: radial-gradient(120% 90% at 50% 0%, transparent 62%, rgba(0,0,0,.3));
 }
 .stage-gl { position: relative; flex: 1; min-height: 0; }
 .stage-caption {
@@ -162,7 +162,7 @@ body::before {
   font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; color: var(--cyan);
   background: rgba(4, 8, 15, .6); border: 1px solid rgba(53,224,255,.3); border-radius: 3px; padding: 4px 8px;
 }
-.stage-diagram { flex: none; border-top: 1px solid var(--line); background: rgba(4, 8, 16, .82); padding: 6px 8px; }
+.stage-diagram { flex: none; border-top: 1px solid var(--line); background: rgba(10, 20, 36, .85); padding: 6px 8px; }
 .stage-diagram svg { display: block; width: 100%; height: auto; max-height: 30vh; }
 .slide.diagram-only .stage-gl { display: none; }
 .slide.diagram-only .stage-diagram { flex: 1; display: flex; align-items: center; justify-content: center; border-top: none; }
@@ -264,22 +264,22 @@ kbd { font-family: var(--mono); font-size: 10.5px; border: 1px solid var(--line)
 .help-foot { font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; margin: 0 0 14px; }
 
 /* diagram svg theming */
-svg .dg-box { fill: rgba(16, 30, 50, .9); stroke: rgba(86, 168, 226, .5); }
-svg .dg-box.accent { fill: rgba(12, 46, 62, .92); stroke: var(--cyan); }
-svg .dg-box.ai { fill: rgba(38, 26, 60, .92); stroke: rgba(176, 123, 255, .75); }
-svg .dg-box.ok { fill: rgba(14, 48, 42, .92); stroke: rgba(110, 242, 192, .75); }
-svg .dg-box.warn { fill: rgba(56, 38, 14, .92); stroke: rgba(255, 179, 71, .75); }
-svg .dg-box.bad { fill: rgba(56, 16, 24, .92); stroke: rgba(255, 95, 112, .8); }
+svg .dg-box { fill: rgba(34, 60, 94, .95); stroke: rgba(120, 195, 245, .85); }
+svg .dg-box.accent { fill: rgba(16, 70, 94, .95); stroke: var(--cyan); }
+svg .dg-box.ai { fill: rgba(58, 40, 92, .95); stroke: rgba(196, 152, 255, .9); }
+svg .dg-box.ok { fill: rgba(20, 72, 62, .95); stroke: rgba(130, 250, 205, .9); }
+svg .dg-box.warn { fill: rgba(84, 58, 22, .95); stroke: rgba(255, 195, 105, .9); }
+svg .dg-box.bad { fill: rgba(86, 26, 38, .95); stroke: rgba(255, 125, 140, .9); }
 svg .dg-box.ghost { fill: rgba(10, 18, 30, .5); stroke: rgba(86, 168, 226, .25); stroke-dasharray: 3 3; }
-svg .dg-t { fill: #e6f3ff; font-family: var(--sans); font-weight: 550; }
-svg .dg-s { fill: #90b0cc; font-family: var(--mono); }
+svg .dg-t { fill: #f4faff; font-family: var(--sans); font-weight: 550; }
+svg .dg-s { fill: #b4d0e8; font-family: var(--mono); }
 svg .dg-h { fill: var(--cyan); font-family: var(--mono); letter-spacing: .16em; }
-svg .dg-edge { stroke: rgba(120, 200, 240, .65); fill: none; }
-svg .dg-edge.soft { stroke: rgba(120, 200, 240, .3); stroke-dasharray: 4 4; }
+svg .dg-edge { stroke: rgba(150, 215, 250, .9); fill: none; }
+svg .dg-edge.soft { stroke: rgba(150, 215, 250, .5); stroke-dasharray: 4 4; }
 svg .dg-edge.ai { stroke: rgba(176, 123, 255, .75); }
 svg .dg-edge.ok { stroke: rgba(110, 242, 192, .75); }
 svg .dg-edge.bad { stroke: rgba(255, 95, 112, .8); }
-svg .dg-lane { fill: rgba(20, 40, 62, .35); stroke: rgba(86, 168, 226, .18); }
+svg .dg-lane { fill: rgba(30, 58, 90, .45); stroke: rgba(120, 195, 245, .35); }
 
 @media (max-width: 900px) {
   .slide { grid-template-columns: minmax(0,1fr); grid-template-areas: "head" "stage" "left" "right" "foot"; overflow: auto; }

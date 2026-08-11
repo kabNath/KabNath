@@ -115,7 +115,7 @@ try {
   renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.75));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.16;
+  renderer.toneMappingExposure = 1.5;
 } catch (e) {
   renderer = null;
 }
@@ -309,6 +309,12 @@ addEventListener('keydown', (e) => {
     const b = document.querySelector('[data-action="anim"]');
     b.classList.toggle('on', paused);
     b.textContent = paused ? 'PLAY' : 'PAUSE';
+  } else if (k === 'b' || k === 'B') {
+    if (renderer) {
+      const steps = [1.5, 1.9, 2.3, 1.2];
+      const cur = steps.findIndex((v) => Math.abs(v - renderer.toneMappingExposure) < 0.01);
+      renderer.toneMappingExposure = steps[(cur + 1) % steps.length];
+    }
   } else if (k === 'f' || k === 'F') {
     if (document.fullscreenElement) document.exitFullscreen();
     else document.documentElement.requestFullscreen?.();

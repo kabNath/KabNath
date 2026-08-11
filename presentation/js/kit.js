@@ -161,11 +161,11 @@ export function stage(opts = {}) {
 }
 
 export function lights(ctx, opts = {}) {
-  const key = new THREE.DirectionalLight(opts.keyColor ?? 0xbfe4ff, opts.key ?? 1.15);
+  const key = new THREE.DirectionalLight(opts.keyColor ?? 0xbfe4ff, opts.key ?? 1.6);
   key.position.set(...(opts.keyPos ?? [26, 40, 22]));
-  const rim = new THREE.DirectionalLight(opts.rimColor ?? 0x2f7bd6, opts.rim ?? 0.9);
+  const rim = new THREE.DirectionalLight(opts.rimColor ?? 0x2f7bd6, opts.rim ?? 1.15);
   rim.position.set(...(opts.rimPos ?? [-30, 12, -26]));
-  const hemi = new THREE.HemisphereLight(opts.skyColor ?? 0x2b5f96, opts.groundColor ?? 0x050a12, opts.hemi ?? 0.7);
+  const hemi = new THREE.HemisphereLight(opts.skyColor ?? 0x3a77b4, opts.groundColor ?? 0x0a1420, opts.hemi ?? 1.05);
   ctx.add(key, rim, hemi);
   if (opts.accent !== false) {
     const p = new THREE.PointLight(opts.accentColor ?? C.cyan, opts.accent ?? 26, 90, 2);
@@ -356,7 +356,7 @@ export function gauge(ctx, opts = {}) {
 export function grid(ctx, opts = {}) {
   const size = opts.size ?? 200;
   const div = opts.div ?? 40;
-  const g = new THREE.GridHelper(size, div, opts.c1 ?? 0x1d4870, opts.c2 ?? 0x0f2740);
+  const g = new THREE.GridHelper(size, div, opts.c1 ?? 0x2a6296, opts.c2 ?? 0x17395e);
   g.material.transparent = true;
   g.material.opacity = opts.opacity ?? 0.5;
   g.position.y = opts.y ?? 0;
@@ -415,11 +415,11 @@ export function terrain(ctx, opts = {}) {
   }
   geo.computeVertexNormals();
   const mesh = new THREE.Mesh(geo, solid(opts.color ?? 0x0d1c2b, {
-    flat: true, roughness: 0.95, metalness: 0.1, emissive: opts.emissive ?? 0x040a12,
+    flat: true, roughness: 0.95, metalness: 0.1, emissive: opts.emissive ?? 0x0a1a2e,
   }));
   mesh.rotation.x = -Math.PI / 2;
   mesh.position.y = opts.y ?? 0;
-  const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geo), lineMat(opts.wire ?? 0x2b6d9c, opts.wireOpacity ?? 0.16));
+  const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geo), lineMat(opts.wire ?? 0x3f8fc9, opts.wireOpacity ?? 0.26));
   wire.rotation.x = -Math.PI / 2;
   wire.position.y = (opts.y ?? 0) + 0.04;
   mesh.userData.noFit = opts.fit !== true;
@@ -434,10 +434,10 @@ export function city(ctx, opts = {}) {
   const maxH = opts.maxH ?? 16;
   const r = rng(opts.seed ?? 3);
   const geo = new THREE.BoxGeometry(1, 1, 1);
-  const mat = solid(opts.color ?? 0x101f31, { metalness: 0.5, roughness: 0.55, emissive: opts.emissive ?? 0x071426 });
+  const mat = solid(opts.color ?? 0x18304a, { metalness: 0.5, roughness: 0.55, emissive: opts.emissive ?? 0x102a4a, emissiveIntensity: 1.1 });
   const mesh = new THREE.InstancedMesh(geo, mat, count);
   const roofGeo = new THREE.BoxGeometry(1, 1, 1);
-  const roof = new THREE.InstancedMesh(roofGeo, glow(opts.lightColor ?? 0x4fc8ff, 0.55), count);
+  const roof = new THREE.InstancedMesh(roofGeo, glow(opts.lightColor ?? 0x4fc8ff, 0.85), count);
   const m = new THREE.Matrix4();
   const q = new THREE.Quaternion();
   const s = new THREE.Vector3();
@@ -467,7 +467,7 @@ export function city(ctx, opts = {}) {
   ctx.add(mesh, roof);
 
   if (opts.roads !== false) {
-    const roadMat = glow(opts.roadColor ?? 0x1f6f9c, 0.28);
+    const roadMat = glow(opts.roadColor ?? 0x2f8fc4, 0.42);
     const n = Math.round(spread / 12);
     for (let i = -n; i <= n; i++) {
       const a = new THREE.Mesh(new THREE.PlaneGeometry(spread * 1.05, 1.5), roadMat);

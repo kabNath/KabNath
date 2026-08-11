@@ -50,6 +50,7 @@ offline either way.
 | `G` | overview grid of all 94 slides |
 | `N` | per-slide production notes (VISUAL · 3D SCENE · COMPONENTS · DATA FLOW · ANIMATION · TEXT · TECHNICAL MESSAGE) |
 | `P` | pause / resume all 3D animation |
+| `B` | brightness boost (cycles 4 levels — useful on projectors) |
 | `F` | fullscreen |
 | number + `Enter` | jump to slide |
 | `#42` in the URL | deep link to a slide |
