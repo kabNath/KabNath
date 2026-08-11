@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>scene preview</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #04070d; overflow: hidden; }
+  canvas { display: block; }
+  #hud { position: fixed; left: 8px; top: 8px; z-index: 5; font: 11px ui-monospace, monospace; color: #6ef2c0; background: rgba(0,0,0,.6); padding: 6px 8px; white-space: pre; }
+</style>
+</head>
+<body>
+<div id="hud">loading…</div>
+<script type="module">
+import { THREE } from './js/kit.js';
+import { SCENES } from './js/scenes/index.js';
+
+const q = new URLSearchParams(location.search);
+const name = q.get('s') || 'titleEarthToEdge';
+const opts = {};
+for (const [k, v] of q) if (k !== 's') opts[k] = isNaN(+v) ? v : +v;
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.75));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.16;
+document.body.appendChild(renderer.domElement);
+
+const ctx = SCENES[name](opts);
+ctx.camera.aspect = innerWidth / innerHeight;
+ctx.camera.updateProjectionMatrix();
+for (let i = 0; i < 4; i++) ctx.update(1.0 + i * 0.2, 0.2);
+if (!q.has('nofit')) ctx.autofit?.({ margin: +(q.get('margin') || 1.08), shiftY: +(q.get('shift') || 0) });
+
+let t = 1.6;
+const clock = new THREE.Clock();
+function frame() {
+  requestAnimationFrame(frame);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  t += dt;
+  ctx.update(t, dt);
+  renderer.render(ctx.scene, ctx.camera);
+}
+frame();
+
+setTimeout(() => {
+  const info = renderer.info.render;
+  document.getElementById('hud').textContent =
+    `${name}\ncam ${ctx.camera.position.toArray().map((v) => v.toFixed(1))}\nlook ${ctx.target.toArray().map((v) => v.toFixed(1))}\n`
+    + `near/far ${ctx.camera.near.toFixed(1)}/${ctx.camera.far.toFixed(0)} fog ${ctx.scene.fog ? ctx.scene.fog.near.toFixed(0) + '/' + ctx.scene.fog.far.toFixed(0) : 'none'}\n`
+    + `calls ${info.calls} tris ${info.triangles}`;
+}, 900);
+</script>
+</body>
+</html>

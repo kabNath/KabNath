@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Autonomous Air–Space–Ground AI Infrastructure</title>
+<meta name="description" content="Animated 3D technical presentation of an autonomous air-space-ground physical AI infrastructure: satellites, UAV swarms, ground robots, edge, digital twins, agentic AI, RAG, federated and multi-agent reinforcement learning." />
+<link rel="stylesheet" href="css/deck.css" />
+</head>
+<body>
+<div id="boot">
+  <div class="boot-inner">
+    <div class="boot-mark"></div>
+    <div class="boot-title">AUTONOMOUS AIR–SPACE–GROUND AI INFRASTRUCTURE</div>
+    <div class="boot-sub" id="boot-sub">initialising render pipeline…</div>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <header id="topbar">
+    <div class="tb-left">
+      <span class="tb-mark"></span>
+      <span class="tb-act" id="tb-act">ACT</span>
+      <span class="tb-sep">/</span>
+      <span class="tb-name" id="tb-name">SLIDE</span>
+    </div>
+    <div class="tb-right">
+      <button class="tb-btn" data-action="overview" title="Slide overview (G)">GRID</button>
+      <button class="tb-btn" data-action="notes" title="Production notes (N)">NOTES</button>
+      <button class="tb-btn" data-action="anim" title="Pause / resume animation (P)">PAUSE</button>
+      <button class="tb-btn" data-action="help" title="Shortcuts (?)">?</button>
+      <span class="tb-counter"><b id="tb-index">1</b><i>/</i><span id="tb-total">1</span></span>
+    </div>
+  </header>
+
+  <main id="deck" aria-live="polite"></main>
+
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <footer id="bottombar">
+    <button class="nav-btn" data-action="prev" aria-label="Previous slide">◄</button>
+    <div id="track" role="progressbar" aria-label="Presentation progress">
+      <div id="track-fill"></div>
+      <div id="track-ticks"></div>
+    </div>
+    <button class="nav-btn" data-action="next" aria-label="Next slide">►</button>
+  </footer>
+
+  <aside id="notes" hidden>
+    <div class="notes-head">
+      <span>PRODUCTION &amp; DIRECTION NOTES</span>
+      <button class="tb-btn" data-action="notes">CLOSE</button>
+    </div>
+    <div id="notes-body"></div>
+  </aside>
+
+  <section id="overview" hidden>
+    <div class="ov-head">
+      <span>SLIDE OVERVIEW</span>
+      <button class="tb-btn" data-action="overview">CLOSE</button>
+    </div>
+    <div id="ov-body"></div>
+  </section>
+
+  <section id="help" hidden>
+    <div class="help-card">
+      <h3>Navigation</h3>
+      <ul>
+        <li><kbd>→</kbd> <kbd>Space</kbd> <kbd>PgDn</kbd> next slide</li>
+        <li><kbd>←</kbd> <kbd>PgUp</kbd> previous slide</li>
+        <li><kbd>Home</kbd> / <kbd>End</kbd> first / last slide</li>
+        <li><kbd>G</kbd> slide overview grid</li>
+        <li><kbd>N</kbd> production &amp; animation notes</li>
+        <li><kbd>P</kbd> pause / resume 3D animation</li>
+        <li><kbd>F</kbd> fullscreen · <kbd>Esc</kbd> close overlays</li>
+        <li><kbd>0</kbd>–<kbd>9</kbd> then <kbd>Enter</kbd> jump to slide number</li>
+      </ul>
+      <p class="help-foot">Every slide carries its own VISUAL / 3D SCENE / COMPONENTS / DATA FLOW / ANIMATION / TEXT / TECHNICAL MESSAGE specification — open it with <kbd>N</kbd>.</p>
+      <button class="tb-btn" data-action="help">CLOSE</button>
+    </div>
+  </section>
+</div>
+
+<noscript>
+  <p style="color:#cfe9ff;background:#05070c;font-family:system-ui;padding:2rem">
+    This presentation is a live WebGL deck and requires JavaScript. The complete slide-by-slide
+    specification is also available as text in <code>docs/SLIDE_SPECS.md</code>.
+  </p>
+</noscript>
+
+<script type="module" src="js/deck.js"></script>
+</body>
+</html>
